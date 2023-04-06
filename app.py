@@ -11,7 +11,7 @@ global model
 model = load_model('cat_dog_classifier.h5')
 print('[INFO] : Model loaded')
 
-st.title('What is this image? :cat: :lion:')
+st.title('What is this image? :cat: :dog:')
 global data
 
 uploaded_file = st.file_uploader("Upload a file to classify")
