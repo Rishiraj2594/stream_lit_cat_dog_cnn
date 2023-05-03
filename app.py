@@ -54,12 +54,12 @@ def predict():
     
     if seg_type == "Unet":
         pred_mask = model_unet.predict(data)
-        st.image(pred_mask, caption='image with image')
+        st.image(pred_mask, caption='mask of image')
         st.image(data, caption=' image without mask')
-    else:
-        pred_mask = model_vgg_fcn.predict(data)
-        st.image(pred_mask, caption='image with image')
-        st.image(data, caption=' image without mask')
+#     else:
+#         pred_mask = model_vgg_fcn.predict(data)
+#         st.image(pred_mask, caption='image with image')
+#         st.image(data, caption=' image without mask')
     st.success('This is a  masked image')
 
 trigger = st.button('Predict', on_click=predict)
