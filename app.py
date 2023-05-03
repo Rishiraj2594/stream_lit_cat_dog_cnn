@@ -55,7 +55,7 @@ def predict():
     if seg_type == "Unet":
         pred_mask = model_unet.predict(data)
         result = process_image_mask(data[0], pred_mask[0])
-        result = result.astype('float') / 255 
+        result = result.astype('np.uint8')*255 
         st.image(result, caption='mask of image')
         st.image(data, caption=' image without mask')
 #     else:
