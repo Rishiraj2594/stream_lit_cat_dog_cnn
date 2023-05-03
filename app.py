@@ -11,12 +11,12 @@ from PIL import Image
 print('[INFO] : Model loading ................')
 global model
 model_unet = load_model('unet.h5')
-model_vgg_fcn = load_model('unet1.h5')
+model_vgg_fcn = load_model('unet.h5')
 print('[INFO] : Model loaded')
 
 st.title('Lane Segmentation')
 global data
-
+seg_type = st.radio("Model Type", ('Unet', 'Vgg-FCN'))
 uploaded_file = st.file_uploader("Upload a file")
 if uploaded_file is not None:
     bytes_data = uploaded_file.read()
@@ -52,8 +52,6 @@ def predict():
 
     # Scaling
     data = data.astype('float') / 255 
-
-    seg_type = st.radio("Model", ('Unet', 'Vgg-FCN'))
     
     if seg_type == "Unet":
         pred_mask = model_unet.predict(data)
