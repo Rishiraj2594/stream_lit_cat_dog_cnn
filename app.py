@@ -55,7 +55,7 @@ def predict():
     result = process_image_mask(data[0], pred_mask[0])
     st.image(result, caption='Predicted image')
        
-    st.success('This is a ' + label + ' predicted with confidence ' + str(accuracy))
+    st.success('This is a  masked image')
 
 trigger = st.button('Predict', on_click=predict)
                
