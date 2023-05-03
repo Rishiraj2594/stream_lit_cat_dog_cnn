@@ -3,6 +3,7 @@ from keras.models import load_model
 import numpy as np
 import io
 from PIL import Image
+import cv2
 
 
 #"""Load model once at running time for all the predictions"""
