@@ -55,6 +55,7 @@ def predict():
 
     pred_mask = model_unet.predict(data)
     st.image(pred_mask, caption='Predicted image')
+    st.image(data, caption='Predicted image')
        
     st.success('This is a  masked image')
 
