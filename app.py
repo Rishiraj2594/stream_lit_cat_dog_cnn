@@ -11,6 +11,7 @@ from PIL import Image
 print('[INFO] : Model loading ................')
 global model
 model_unet = load_model('unet.h5')
+model_vgg = load_model('unet.h5')
 print('[INFO] : Model loaded')
 
 st.title('Lane Segmentation')
@@ -21,7 +22,7 @@ if uploaded_file is not None:
     bytes_data = uploaded_file.read()
     img = Image.open(io.BytesIO(bytes_data))
     data = img.resize((128, 128), Image.ANTIALIAS)
-    st.image(img, caption='Image without mask')
+    st.image(img, caption='orginal image')
     
 # # Function to calculate mask over image
 # def weighted_img(img, initial_img, α=1., β=0.5, γ=0.):
@@ -54,8 +55,8 @@ def predict():
 
 
     pred_mask = model_unet.predict(data)
-    st.image(pred_mask, caption='Predicted image')
-    st.image(data, caption='Predicted image')
+    st.image(pred_mask, caption='image with image')
+    st.image(data, caption=' image without mask')
        
     st.success('This is a  masked image')
 
