@@ -58,7 +58,7 @@ def predict():
         st.image(pred_mask, caption='image with image')
         st.image(data, caption=' image without mask')
     else:
-        pred_mask = model_vgg_fcnt.predict(data)
+        pred_mask = model_vgg_fcn.predict(data)
         st.image(pred_mask, caption='image with image')
         st.image(data, caption=' image without mask')
     st.success('This is a  masked image')
