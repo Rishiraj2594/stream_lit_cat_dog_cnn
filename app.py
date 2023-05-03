@@ -39,6 +39,7 @@ def predict():
     else:
         label = 'Cat'
         accuracy = round((1 - pred_prob) * 100, 2)
+    st.image(img, caption='Predicted image')
        
     st.success('This is a ' + label + ' predicted with confidence ' + str(accuracy))
 
