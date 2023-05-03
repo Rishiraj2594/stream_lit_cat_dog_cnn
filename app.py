@@ -4,7 +4,7 @@ import numpy as np
 import io
 from PIL import Image
 # pip install opencv-python
-# import cv2
+import cv2
 
 
 #"""Load model once at running time for all the predictions"""
@@ -54,7 +54,7 @@ def predict():
     
     if seg_type == "Unet":
         pred_mask = model_unet.predict(data)
-        result = process_image_mask(data[0], pred_mask[0]))
+        result = process_image_mask(data[0], pred_mask[0])
         st.image(result, caption='mask of image')
         st.image(data, caption=' image without mask')
 #     else:
