@@ -11,7 +11,7 @@ from PIL import Image
 print('[INFO] : Model loading ................')
 global model
 model_unet = load_model('unet.h5')
-model_vgg = load_model('unet.h5')
+model_vgg_fcn = load_model('unet1.h5')
 print('[INFO] : Model loaded')
 
 st.title('Lane Segmentation')
@@ -53,11 +53,16 @@ def predict():
     # Scaling
     data = data.astype('float') / 255 
 
-
-    pred_mask = model_unet.predict(data)
-    st.image(pred_mask, caption='image with image')
-    st.image(data, caption=' image without mask')
-       
+    seg_type = st.radio("Model", ('Unet', 'Vgg-FCN'))
+    
+    if seg_type == "Unet":
+        pred_mask = model_unet.predict(data)
+        st.image(pred_mask, caption='image with image')
+        st.image(data, caption=' image without mask')
+    else:
+        pred_mask = model_vgg_fcnt.predict(data)
+        st.image(pred_mask, caption='image with image')
+        st.image(data, caption=' image without mask')
     st.success('This is a  masked image')
 
 trigger = st.button('Predict', on_click=predict)
