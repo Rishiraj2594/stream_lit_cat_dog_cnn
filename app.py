@@ -54,7 +54,7 @@ def predict():
     if seg_type == "Unet":
         pred_mask = model_unet.predict(data)
         result = process_image_mask(data[0], pred_mask[0]) 
-        st.image(result, caption='mask of image',clamp=True, channels='BGR')
+        st.image(result, caption='mask of image',clamp=True)
         st.image(data, caption=' image without mask')
 #     else:
 #         pred_mask = model_vgg_fcn.predict(data)
