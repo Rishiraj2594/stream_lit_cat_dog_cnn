@@ -11,7 +11,7 @@ from PIL import Image
 print('[INFO] : Model loading ................')
 global model
 model_unet = load_model('unet.h5')
-model_vgg_fcn = load_model('unet.h5')
+model_vgg_fcn = load_model('unet1.h5')
 print('[INFO] : Model loaded')
 
 st.title('Lane Segmentation')
