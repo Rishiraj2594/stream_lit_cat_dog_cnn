@@ -50,7 +50,7 @@ def predict():
     data = np.expand_dims(data, axis=0)
 
     # Scaling
-    
+    data = data.astype(float)/255
     if seg_type == "Unet":
         pred_mask = model_unet.predict(data)
         result = process_image_mask(data[0], pred_mask[0])
