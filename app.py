@@ -11,6 +11,7 @@ import cv2
 print('[INFO] : Model loading ................')
 global model
 model_unet = load_model('unet.h5')
+model_vgg_fcn = load_model('vgg-fcn2.h5')
 print('[INFO] : Model loaded')
 
 st.title('Lane Segmentation')
@@ -56,10 +57,11 @@ def predict():
         result = process_image_mask(data[0], pred_mask[0]) 
         st.image(result, caption='mask of image',clamp=True,width = 220)
         st.image(data, caption=' image without mask',width = 220)
-#     else:
-#         pred_mask = model_vgg_fcn.predict(data)
-#         st.image(pred_mask, caption='image with image')
-#         st.image(data, caption=' image without mask')
+    else:
+        pred_mask = model_vgg_fcn.predict(data)
+        result = process_image_mask(data[0], pred_mask[0]) 
+        st.image(result, caption='mask of image',clamp=True,width = 220)
+        st.image(data, caption=' image without mask',width = 220)
     st.success('This is a  masked image')
 
 trigger = st.button('Predict', on_click=predict)
